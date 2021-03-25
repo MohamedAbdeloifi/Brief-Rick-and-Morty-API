@@ -1,12 +1,150 @@
+@import "variables";
+@import "home";
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main {
+    position: relative;
+}
 body {
-    background-color: aquamarine;
-    font-family: "Shojumaru";
+    background-color: $green;
 }
-$color-yellow: #ffff00;
-$color-red: #FF0000;
+
 h1 {
-    color: $color-red
+    margin: 0;
 }
-span {
-    background-color: $color-yellow
+
+h3 {
+    font-family: $shojumaru;
+    font-size: $sizeH3;
+    font-weight: $weightH3;
+    color: $blue;
+    text-shadow: $shadowH3;
+    margin: 0%;
+}
+
+header {
+    height: 50px;
+    background-color: $white;
+    position: sticky;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    margin: 0;
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+
+// ********************* HEADER *******************
+
+.nav__container-img {
+    width: 10%;
+}
+.nav__container-links {
+    ul { 
+        display: flex;
+        justify-content: space-around;
+        font-family: $roboto;
+
+        li {  
+            margin: 0 30px; 
+            a {
+                font-size: 16px;
+                font-weight: 700;
+                color: $grey;
+            }
+        }  
+    } 
+}
+
+//********************** CARD ********************
+
+.card {
+    border-radius: $radiusCard;
+    border: $borderCard;
+    background-color: $white;
+    width: 20%;  
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.card__text {
+    text-align: center;
+    padding: 10px 0
+}
+.card__img {
+    height: 142px;
+}
+
+
+// ****************** MODAL ************************
+.modal {
+    border-radius: $radiusCard;
+    background-color: $lightGrey;
+    opacity: 0.9;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal__card-detail {
+    border-radius: $radiusCard;
+    background-color: $grey;
+    p {
+        font-family: $roboto;
+        font-size: $sizeTextModal;
+        font-weight: $weightTextModal;
+        color: $green;  
+    } 
+}
+
+.modal__card-select {
+    border-radius: $radiusCard;
+    background-color: $green;
+    p {
+        font-family: $roboto;
+        font-size:$sizeTextSelectCard;
+        font-weight: $weightTextSelectCard;
+        color: $white;  
+    }
+}
+
+// ****************** FOOTER ************************
+
+footer {
+    background-color: $white;
+    height: 50px;
+
+    .footer__container-text {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        span {
+            color: $grey;
+            font-family: $roboto;
+            font-weight: 700;
+            font-size: 16px;
+        }
+    }
 }

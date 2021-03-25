@@ -1,0 +1,19 @@
+.main__home {   
+    background-image: url("../assets/body_bg1.png");
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center;
+    background-attachment: fixed;
+    height: calc(100vh - 50px);
+}
+
+.container__card {
+    display: flex;
+    justify-content: space-evenly;
+    width: 70%;
+    margin: 0 auto;
+    align-items: flex-end;
+    height: calc(100% - 50px);
+}
+
+
