@@ -1,0 +1,12 @@
+body {
+    background-color: aquamarine;
+    font-family: "Shojumaru";
+}
+$color-yellow: #ffff00;
+$color-red: #FF0000;
+h1 {
+    color: $color-red
+}
+span {
+    background-color: $color-yellow
+}

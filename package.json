@@ -1,0 +1,26 @@
+{
+  "name": "brief-rick-and-morty-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./js/script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MohamedAbdeloifi/Brief-Rick-and-Morty-API.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MohamedAbdeloifi/Brief-Rick-and-Morty-API/issues"
+  },
+  "homepage": "https://github.com/MohamedAbdeloifi/Brief-Rick-and-Morty-API#readme",
+  "devDependencies": {
+    "sass": "^1.32.8"
+  },
+  "dependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
+}
