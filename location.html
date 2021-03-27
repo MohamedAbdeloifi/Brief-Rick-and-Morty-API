@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Shojumaru&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./scss/style.scss">
-    <script src="./js/script.js" defer></script>
-    <title>Rick and Morty / Home</title>
+    <script src="./js/scriptLocation.js" defer></script>
+    <title>Rick and Morty / Location</title>
 </head>
-
 <body>
-    <main class="main__home">
+
+    <main class="main__location" id="mainLocation">
 
         <header>
             <nav>
@@ -40,41 +38,19 @@
                 </div>
             </nav>
         </header>
-    
-        <section class="container__card">
-            <div class="card">
-                <div class="card__text">
-                    <a href="#">
-                        <h3>Episode</h3>
-                    </a>
-                </div>
-                <div class="card__img">
-                    <img src="assets/Rick_and_Morty_Episode.png" alt="Image Rick and Morty">
-                </div>
-            </div>
 
-            <div class="card">
-                <div class="card__text">
-                    <a href="#">
-                        <h3>Character</h3>
-                    </a>
-                </div>
-                <div class="card__img">
-                    <img src="assets/Rick_and_Morty_Character.png" alt="Image Rick and Morty">
-                </div>
-            </div>
+        <div class="select">
+            <select name="types" id="typeSelect">
+                <option value="">TYPE</option>
 
-            <div class="card">
-                <div class="card__text">
-                    <a href="#">
-                        <h3>Location</h3>
-                    </a>
-                </div>
-                <div class="card__img">
-                    <img src="assets/Rick_and_Morty_Location.png" alt="Image Rick and Morty">
-                </div>
-            </div>
+            </select>
+        </div>
+
+        <section class="container__card-location">
         </section>
+        <section class="container__modal-location">
+        </section>
+   
     </main>
 
     <footer>
@@ -82,7 +58,5 @@
             <span>BY YELLOW POD 2021</span>
         </div>
     </footer>
-
 </body>
-
 </html>

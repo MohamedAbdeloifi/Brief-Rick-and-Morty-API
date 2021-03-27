@@ -85,6 +85,7 @@ img {
     width: 20%;  
     margin-bottom: 10px;
     overflow: hidden;
+    cursor: pointer;
 }
 .card__text {
     text-align: center;
@@ -94,6 +95,16 @@ img {
     height: 142px;
 }
 
+.container__card-location {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 80%;
+    margin: 0 auto;
+}
+.img__loc {
+    height: auto;
+}
 
 // ****************** MODAL ************************
 .modal {
@@ -103,6 +114,11 @@ img {
     width: 50%;
     display: flex;
     justify-content: space-around;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal__card-detail {
@@ -127,6 +143,36 @@ img {
     }
 }
 
+.container__modal-location {
+    width: 40%;
+    height: 70%;
+}
+
+//******************* SELECT ************************
+.select {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+    
+    select {
+        display: flex;
+        justify-content: center;
+        width: 25%;
+        padding: 10px 60px;
+        border: none;
+        font-family: $shojumaru;
+        font-size: $sizeSelect;
+        font-weight: $weightSelect;
+        color: $green;
+        border-radius: $radiusSelect;
+        cursor: pointer;
+
+        option {
+            background-color: $lightGrey !important;
+
+        }
+    }
+}
 // ****************** FOOTER ************************
 
 footer {
