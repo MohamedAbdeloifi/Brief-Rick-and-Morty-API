@@ -5,7 +5,9 @@
   "main": "./js/script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel character.html"
     "dev": "parcel location.html"
+
   },
   "repository": {
     "type": "git",
