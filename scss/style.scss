@@ -148,3 +148,42 @@ footer {
         }
     }
 }
+
+
+.container-card-character {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.img__character{
+    height: auto;
+}
+
+.species-select {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+
+    select {
+        display: flex;
+        justify-content: center;
+        width: 25%;
+        padding: 10px 60px;
+        border: none;
+        font-family: $shojumaru;
+        font-size: $sizeSelect;
+        font-weight: $weightSelect;
+        color: $green;
+        border-radius: $radiusSelect;
+        cursor: pointer;
+        outline: none;
+
+        option {
+            background-color: $lightGrey !important;
+
+        }
+    }
+}
