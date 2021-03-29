@@ -1,5 +1,5 @@
 .main__home {   
-    background-image: url("../assets/body_bg1.png");
+    background-image: url("../assets/body_bg_home.png");
     background-repeat: no-repeat;
     background-size: 60%;
     background-position: center;
@@ -16,4 +16,16 @@
     height: calc(100% - 50px);
 }
 
+.gif{
+    width: 20%;
+    position: absolute;
+    left: 0
+    
+}
+.gif2 {
+    align-items: flex-end;
+    right: 0;
+    width: 20%;
+    position: absolute;
+}
 

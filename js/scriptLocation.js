@@ -1,10 +1,12 @@
-//  fetch(`https://rickandmortyapi.com/api/character`)
-// .then((res)=>{
-//     res.json()
-//     .then((episode)=>{
-//         console.log(episode);
-//     })
-// })
+
+ fetch(`https://rickandmortyapi.com/api/character`)
+.then((res)=>{
+    res.json()
+    .then((character)=>{
+        console.log(character);
+    })
+})
+
 import iconCross from '../assets/icon_cross.png';
 import planet1 from '../assets/planet-1.png';
 import planet2 from '../assets/planet-2.png';
@@ -19,7 +21,7 @@ import planet8 from '../assets/planet-8.jpg';
 const typeSelect = document.getElementById('typeSelect');
 let locationCard = document.querySelector('.container__card-location');
 let containerLocation = document.querySelector('.container');
-
+let containerLocation = document.querySelector('.container_loc');
 let tabPlanets = {
     Cluster: planet1,
     Microverse: planet2,
@@ -97,18 +99,18 @@ function addCard(location) {
     containerLocation.innerHTML += 
     `<section class="container__card-location">
         <div class="card">
+        <div class="card_loc">
             <div class="card__text">
                 <h3 class="location-name" id="h3_location${location.id}">
                     ${location.name}
                 </h3>
             </div>
             <div class="card__img img__loc">
+            <div class="img__loc">
                 <img src="${tabPlanets[location.type]}" alt="">
             </div>
         </div>
     </section>`;
-
-    
 }
 
 //Création modal
@@ -123,6 +125,7 @@ function addModal(location) {
             </div>
             <div class="modal__card-detail">
                 <div class="card__img img__loc">
+                <div class="img__loc">
                     <img src="${tabPlanets[location.type]}" alt="">
                 </div>
                 <h3 class="modal-location-name">Name : ${location.name}</h3>
@@ -130,6 +133,7 @@ function addModal(location) {
                 <p>Dimension : ${location.dimension}</p>
                 <p>Residents:</p>
                 <ul class="ul-test"></ul>
+                <ul class="ul"></ul>
             </div>   
         </div>
     </section>`;
@@ -153,6 +157,7 @@ console.log('GET resident')
             res.json()
             .then((resident)=> {
                let ul = document.querySelector('.ul-test');
+               let ul = document.querySelector('.ul');
                ul.innerHTML += `<li>${resident.name}</li>`
             })
         })  
