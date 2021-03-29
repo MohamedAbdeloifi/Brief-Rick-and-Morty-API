@@ -6,9 +6,7 @@ html, body {
     padding: 0;
     box-sizing: border-box;
 }
-main {
-    position: relative;
-}
+
 body {
     background-color: $green;
 }
@@ -55,19 +53,27 @@ img {
     display: none
 }
 
-main { 
+.main__location {
+    position: relative;
     background-image: url("../assets/bg_body\ \(2\).png");
     background-repeat: no-repeat;
     background-size: 60%;
     background-position: center;
     background-attachment: fixed;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 100px);
+    overflow-y: scroll
+   
 }
 // ********************* HEADER *******************
 
 .nav__container-img {
     width: 10%;
+    transition: transform .8s ease-in-out;  
 }
+.nav__container-img:hover {
+    transform:rotate(180deg);
+}
+
 .nav__container-links {
     ul { 
         display: flex;
@@ -103,9 +109,10 @@ main {
     border: $borderCard;
     background-color: $white;
     margin-bottom: 30px;
-    cursor: pointer;  
+    cursor: pointer;
+    transition: all 300ms ease;  
 }
-.card:hover {
+.card:hover{
     transform: scale(1.2);
 }
 
@@ -117,7 +124,13 @@ main {
     background-color: $white;
     margin-bottom: 10px;
     cursor: pointer;
+    transition: all 300ms ease; 
 }
+.card_loc:hover {
+    transform: scale(1.1);
+}
+
+
 .card__text {
     text-align: center;
     padding: 10px 0
@@ -127,12 +140,9 @@ main {
 }
 .container__card-location {
     display: flex;
-// //     flex-wrap: wrap;
-// //     justify-content: space-around;
     width: 18%;
     height: 150px;
     margin-bottom: 20px;
-// //     margin: 0 auto;
 }
 .img__loc {
     width: 100%;
@@ -140,32 +150,48 @@ main {
 }
 
 // ****************** MODAL ************************
-// .modal {
-//     border-radius: $radiusCard;
-//     background-color: $lightGrey;
-//     opacity: 0.9;
-//     width: 50%;
-//     display: flex;
-//     justify-content: space-around;
-//     margin: 0 auto;
-//     height: 100vh;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-// }
+.modal {
+    border-radius: $radiusCard;
+    background-color: $lightGrey;
+    // opacity: 0.9;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+}
 
 .modal__card-detail {
     border-radius: $radiusCard;
     background-color: $grey;
+    width: 30%;
+    margin: 30px 0;
+ 
+    h3 {
+        font-size: $sizeTextModal;
+        padding: 15px 0;
+        text-align: center;
+    }
     p {
         font-family: $roboto;
         font-size: $sizeTextModal;
         font-weight: $weightTextModal;
-        color: $green;  
+        color: $green;
+        text-align: center;
+        padding: 5px 0;
+        margin: 0;
     }
     ul {
-        height: 100px;
+        padding: 10px 0;
+        height: 130px;
         overflow-x: hidden;
+        text-align: center;
+        background-color: $green;
+        
+        li {
+            font-family: $roboto;
+            font-weight: $weightTextModal;
+        }
     }
 }
 
@@ -186,11 +212,20 @@ main {
 
 .icon-cross {
     cursor: pointer;
+    margin-left: 40px;
+    transition: transform .8s ease-in-out;  
+
+}
+.icon-cross:hover {
+    transform:rotate(180deg);
 }
 
 .container__modal-location {
-    width: 40%;
-    height: 70%;
+    width: 80%;
+    position: absolute;
+    top: 18%;
+    left: 15%;
+    margin: 30px 0;
 }
 
 //******************* SELECT ************************
@@ -218,15 +253,16 @@ main {
         }
     }
 }
+.select select:hover {
+    background: $grey;
+    transition: all 1s ease-out;
+}
 
 // ****************** FOOTER ************************
 
-footer {
+footer, .loc {
     background-color: $white;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    
+
     .footer__container-text {
         text-align: center;
         display: flex;

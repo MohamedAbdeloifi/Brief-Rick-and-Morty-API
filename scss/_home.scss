@@ -4,6 +4,7 @@
     background-size: 60%;
     background-position: center;
     background-attachment: fixed;
+    height: calc(100vh - 50px);
 }
 
 .container__card {
@@ -15,5 +16,16 @@
     height: calc(100% - 50px);
 }
 
-
+.gif{
+    width: 20%;
+    position: absolute;
+    left: 0
+    
+}
+.gif2 {
+    align-items: flex-end;
+    right: 0;
+    width: 20%;
+    position: absolute;
+}
 

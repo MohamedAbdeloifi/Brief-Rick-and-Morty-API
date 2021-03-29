@@ -1,10 +1,10 @@
-//  fetch(`https://rickandmortyapi.com/api/character`)
-// .then((res)=>{
-//     res.json()
-//     .then((episode)=>{
-//         console.log(episode);
-//     })
-// })
+ fetch(`https://rickandmortyapi.com/api/character`)
+.then((res)=>{
+    res.json()
+    .then((character)=>{
+        console.log(character);
+    })
+})
 import iconCross from '../assets/icon_cross.png';
 import planet1 from '../assets/planet-1.png';
 import planet2 from '../assets/planet-2.png';
@@ -107,8 +107,6 @@ function addCard(location) {
             </div>
         </div>
     </section>`;
-
-    
 }
 
 //Création modal
@@ -129,7 +127,7 @@ function addModal(location) {
                 <p>Type : ${location.type}</p>
                 <p>Dimension : ${location.dimension}</p>
                 <p>Residents:</p>
-                <ul class="ul-test"></ul>
+                <ul class="ul"></ul>
             </div>   
         </div>
     </section>`;
@@ -146,13 +144,13 @@ function addModal(location) {
 
 //Récupère les résidents au click de la card + les affiche ds modal
 function getResidents(location) {
-console.log('GET resident')
+
     for (const uri of location.residents) {
         fetch(uri)
         .then((res)=>{
             res.json()
             .then((resident)=> {
-               let ul = document.querySelector('.ul-test');
+               let ul = document.querySelector('.ul');
                ul.innerHTML += `<li>${resident.name}</li>`
             })
         })  
