@@ -1,22 +1,37 @@
-//  fetch(`https://rickandmortyapi.com/api/episode`)
+//  fetch(`https://rickandmortyapi.com/api/character`)
 // .then((res)=>{
 //     res.json()
 //     .then((episode)=>{
 //         console.log(episode);
 //     })
 // })
-// fetch(`https://rickandmortyapi.com/api/character`)
-// .then((res)=>{
-//     res.json()
-//     .then((character)=>{
-//         console.log(character); 
-//     })
-// })
+import iconCross from '../assets/icon_cross.png';
+import planet1 from '../assets/planet-1.png';
+import planet2 from '../assets/planet-2.png';
+import planet3 from '../assets/planet-3.jpg';
+import planet4 from '../assets/planet-4.jpg';
+import planet5 from '../assets/planet-5.png';
+import planet6 from '../assets/planet-6.jpg';
+import planet7 from '../assets/planet-7.jpg';
+import planet8 from '../assets/planet-8.jpg';
+
 
 const typeSelect = document.getElementById('typeSelect');
 let locationCard = document.querySelector('.container__card-location');
-const locationModal = document.querySelector('.container__modal-location');
-const btnLocationnName = document.querySelector('.location-name');
+let containerLocation = document.querySelector('.container_loc');
+
+let tabPlanets = {
+    Cluster: planet1,
+    Microverse: planet2,
+    TV: planet3,
+    Resort: planet4,
+    'Fantasy town': planet5,
+    'Space station': planet6,
+    Dream: planet7, 
+    Planet: planet8,
+};
+
+
 
 fetch(`https://rickandmortyapi.com/api/location`)
 .then((res)=>{
@@ -36,14 +51,18 @@ fetch(`https://rickandmortyapi.com/api/location`)
             `<option value="${location.type}">${location.type}</option>`
         });
         
+        //Affiche cards courantes
         showCardType('')
-        //************* CARDS ****************** */
-        //récupère la value du select + vide + affiche cards correspondantes
-        typeSelect.addEventListener('change', event => {
-            locationCard.innerHTML=''
-            showCardType(event.target.value)
-        })
 
+        //************* CARDS ****************** */
+        //récupère la valeur du select + vide + affiche cards correspondantes
+        typeSelect.addEventListener('change', event => {
+            containerLocation.innerHTML = ''
+            showCardType(event.target.value)
+        })   
+    })
+    .catch((error) => {
+        console.error(error)
     })
 })
 
@@ -53,41 +72,93 @@ function showCardType(type) {
     .then((res)=>{
         res.json()
         .then((location)=>{
-            location.results.map((location) => {
-                addCard(location);
-            })
+
+            //results récupère le tab location.results
+            const results = location.results;
+            for (const location of results) {
+                addCard(location, results);
+            }
+
+            let nameCards = document.querySelectorAll('.location-name');
+
+            for (let index = 0; index < nameCards.length; index++) { 
+
+                nameCards[index].addEventListener('click', () => {
+                    //permet de récupérer l'index de l'élémt courant
+                    addModal(results[index])
+                })
+            }
         })
     })   
 }
 
 //Création des cards
 function addCard(location) {
-    locationCard.innerHTML += 
-    `<div class="card" >
-    <div class="card__text">
-    <h3 class="location-name">${location.name}</h3>
-    </div>
-    <div class="card__img img__loc">
-    <img src="" alt="">
-    </div>
-    </div>`;
+    containerLocation.innerHTML += 
+    `<section class="container__card-location">
+        <div class="card_loc">
+            <div class="card__text">
+                <h3 class="location-name" id="h3_location${location.id}">
+                    ${location.name}
+                </h3>
+            </div>
+            <div class="img__loc">
+                <img src="${tabPlanets[location.type]}" alt="">
+            </div>
+        </div>
+    </section>`;
+
+    
 }
 
 //Création modal
 function addModal(location) {
-    locationModal.innerHTML += 
-    `<div class="modal">
-    <div class="modal__card-detail">
-    <h3 class="location-name">${location.name}</h3>
-    <p>${location.type}</p>
-    <p>${location.dimension}</p>
-    <p>${location.residents}</p>
-    </div>
-    <div class="card__img">
-    <img src="" alt="">
-    </div>
-    </div>`;
+    const modal = document.querySelector('.container-details');
+
+    modal.innerHTML +=    
+    `<section class="container__modal-location">     
+        <div class="modal" id="id_location_${location.id}">
+            <div class="icon-cross">
+                <img src="${iconCross}" alt="Icon cross">
+            </div>
+            <div class="modal__card-detail">
+                <div class="img__loc">
+                    <img src="${tabPlanets[location.type]}" alt="">
+                </div>
+                <h3 class="modal-location-name">Name : ${location.name}</h3>
+                <p>Type : ${location.type}</p>
+                <p>Dimension : ${location.dimension}</p>
+                <p>Residents:</p>
+                <ul class="ul-test"></ul>
+            </div>   
+        </div>
+    </section>`;
+    getResidents(location)
+ 
+    const locationModal = document.querySelector('.container__modal-location');
+    let cross = document.querySelector('.icon-cross');
+
+    cross.addEventListener('click', () => {
+        locationModal.remove()
+    })
+ }
+
+
+//Récupère les résidents au click de la card + les affiche ds modal
+function getResidents(location) {
+console.log('GET resident')
+    for (const uri of location.residents) {
+        fetch(uri)
+        .then((res)=>{
+            res.json()
+            .then((resident)=> {
+               let ul = document.querySelector('.ul-test');
+               ul.innerHTML += `<li>${resident.name}</li>`
+            })
+        })  
+    }
 }
+
 
 //function pour enlever doublons ds tableau
 function uniq(array, key) {
@@ -106,3 +177,4 @@ function uniq(array, key) {
     }, []
     )   
 }
+
