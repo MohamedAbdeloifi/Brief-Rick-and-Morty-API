@@ -1,7 +1,6 @@
 let selectSpecies = document.getElementById("speciesSelect");
 let characterCard = document.querySelector(".container-card-character");
 const characterModal = document.querySelector('.container__modal-character');
-const btnLocationnName = document.querySelector('.character-species');
 let iconCross = document.querySelector('.icon-cross')
 
 
@@ -45,14 +44,7 @@ function addCard(character) {
             </div>
     </div>`;
     //console.log(character)
-    let charaterName = document.querySelectorAll(".character-name")
-    for (let i = 0; i < charaterName.length; i++) {
-
-        charaterName[i].addEventListener('click', () => {
-            console.log(characterModal)
-            addModal()
-        })
-    }
+    
 }
 
 //Afficher cards en fonction du type selectionné avec fetch ?type
@@ -61,10 +53,19 @@ function showCardSpecies(species) {
         .then((res) => {
             res.json()
                 .then((character) => {
-                    character.results.map((character) => {
-                        addCard(character)
+                    let results = character.results
+                    for (const character of results) {
+                        addCard(character, results)
 
-                    })
+                    }
+                    let charaterName = document.querySelectorAll(".character-name")
+                    for (let i = 0; i < charaterName.length; i++) {
+
+                        charaterName[i].addEventListener('click', () => {
+                            console.log(characterModal)
+                            addModal(results[i])
+                        })
+                    }
 
                 })
         })
@@ -74,44 +75,48 @@ function showCardSpecies(species) {
 
 
 
-function addModal() {
+function addModal(character) {
     characterModal.innerHTML =
-        `<div class="modal">
+        `<div class="modal" id="id-character-${character.id}">
+        <div class="icon-cross">
+        <img src="">
+        </div>
     <div class="modal__card-detail">
     <h3 class="character-name">${character.name}</h3>
     <p>${character.species}</p>
     <p>${character.gender}</p>
     <p>${character.type}</p>
-    <p>${character.origin}</p>
-    <p>${character.location}</p>
-    <ul class="ul">${getResidents(character)}</ul>
+    <p>${character.origin.name}</p>
+    <p>${character.location.name}</p>
+    <ul class="ul"></ul>
     </div>
     </div>`;
-    // characterModal.appendChild(iconCross)
-    // iconCross.classList.remove('hide')
-    // removeModal()
-}
-
-
-function removeModal() {
-    iconCross.addEventListener('click', () => {
-        characterModal.innerHTML = ""
+    getEpisode(character)
+    
+                    
+    let modal = document.querySelector(".modal")
+    let cross = document.querySelector(".icon-cross")
+    cross.addEventListener('click', () => {
+    modal.remove()
 
     })
 }
 
-//Récupère les résidents au click de la card + les affiche ds modal
-function getResidents(character) {
-    for (const uri of character.results) {
+
+
+function getEpisode(character) {
+
+    for (const uri of character.episode) {
         fetch(uri)
-            .then((res) => {
-                res.json()
-                    .then((character) => {
-                        let ul = characterModal.querySelector('.ul')
-                        ul.innerHTML += `<li>${character.results}</li>`
-                        return ul
-                    })
+        .then((res)=>{
+            res.json()
+            .then((episode)=> {
+               let ul = document.querySelector('.ul');
+               ul.innerHTML += `<li>${episode.name}</li>`
+                        console.log("episode", episode.name)
+
             })
+        })
     }
 }
 
@@ -124,6 +129,7 @@ function uniq(array, key) {
         //récupère le tableau courant + filtre les elements
         let filter = arrayItems.filter((items) => {
 
+          
             //retourne le tableau filtré d'éléments différent du tableau de l'élément courant avec la clé
             return items[key] !== currentItem[key]
         })
