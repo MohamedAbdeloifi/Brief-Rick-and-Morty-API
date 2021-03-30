@@ -8,9 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Shojumaru&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./scss/episode.scss">
     <link rel="stylesheet" href="./scss/style.scss">
-    <script src="./js/character.js" defer></script>
-    <title>Rick and Morty / Character</title>
+    <script src="./js/episode.js" defer></script>
+    <title>Rick and Morty / Episode</title>
 </head>
 <body>
 
@@ -38,29 +39,25 @@
             </div>
         </nav>
     </header>
-
-
-
-    <main id="character">  
-
-
-        <div class="species-select select">
-                <select name="species" id="speciesSelect">
-                    <option value="">SPECIES</option>
-
-                </select>
+    <div class="season-container">
+        <div id="seasons" >
+            <section id="season1">
+                <h2>SAISON 1</h2>
+            </section>
+            <section id="season2">
+                <h2>SAISON 2</h2>
+            </section>
+            <section id="season3">
+                <h2>SAISON 3</h2>
+            </section>
+            <section id="season4">
+                <h2>SAISON 4</h2>
+            </section>
         </div>
-        <section class="container-card-character">
-            
-        </section>
+        <div id="episodes">
 
-        <section class="container__modal-character container__modal-location">
-            
-        </section>
-
-    </main>
-
-
+        </div>
+    </div>
     <footer>
         <div class="footer__container-text">
             <span>BY YELLOW POD 2021</span>

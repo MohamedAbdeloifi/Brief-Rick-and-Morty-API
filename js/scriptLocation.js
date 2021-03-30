@@ -1,5 +1,4 @@
-
- fetch(`https://rickandmortyapi.com/api/character`)
+fetch(`https://rickandmortyapi.com/api/character`)
 .then((res)=>{
     res.json()
     .then((character)=>{
@@ -17,11 +16,10 @@ import planet6 from '../assets/planet-6.jpg';
 import planet7 from '../assets/planet-7.jpg';
 import planet8 from '../assets/planet-8.jpg';
 
-
 const typeSelect = document.getElementById('typeSelect');
 let locationCard = document.querySelector('.container__card-location');
-let containerLocation = document.querySelector('.container');
 let containerLocation = document.querySelector('.container_loc');
+
 let tabPlanets = {
     Cluster: planet1,
     Microverse: planet2,
@@ -32,8 +30,6 @@ let tabPlanets = {
     Dream: planet7, 
     Planet: planet8,
 };
-
-
 
 fetch(`https://rickandmortyapi.com/api/location`)
 .then((res)=>{
@@ -98,14 +94,12 @@ function showCardType(type) {
 function addCard(location) {
     containerLocation.innerHTML += 
     `<section class="container__card-location">
-        <div class="card">
         <div class="card_loc">
             <div class="card__text">
                 <h3 class="location-name" id="h3_location${location.id}">
                     ${location.name}
                 </h3>
             </div>
-            <div class="card__img img__loc">
             <div class="img__loc">
                 <img src="${tabPlanets[location.type]}" alt="">
             </div>
@@ -124,7 +118,6 @@ function addModal(location) {
                 <img src="${iconCross}" alt="Icon cross">
             </div>
             <div class="modal__card-detail">
-                <div class="card__img img__loc">
                 <div class="img__loc">
                     <img src="${tabPlanets[location.type]}" alt="">
                 </div>
@@ -132,7 +125,6 @@ function addModal(location) {
                 <p>Type : ${location.type}</p>
                 <p>Dimension : ${location.dimension}</p>
                 <p>Residents:</p>
-                <ul class="ul-test"></ul>
                 <ul class="ul"></ul>
             </div>   
         </div>
@@ -147,16 +139,14 @@ function addModal(location) {
     })
  }
 
-
 //Récupère les résidents au click de la card + les affiche ds modal
 function getResidents(location) {
-console.log('GET resident')
+
     for (const uri of location.residents) {
         fetch(uri)
         .then((res)=>{
             res.json()
             .then((resident)=> {
-               let ul = document.querySelector('.ul-test');
                let ul = document.querySelector('.ul');
                ul.innerHTML += `<li>${resident.name}</li>`
             })

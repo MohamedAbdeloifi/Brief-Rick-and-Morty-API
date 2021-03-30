@@ -1,10 +1,8 @@
+import iconCross from '../assets/icon_cross.png';
+
 let selectSpecies = document.getElementById("speciesSelect");
 let characterCard = document.querySelector(".container-card-character");
 const characterModal = document.querySelector('.container__modal-character');
-let iconCross = document.querySelector('.icon-cross')
-
-
-
 
 fetch(`https://rickandmortyapi.com/api/character`)
     .then((res) => {
@@ -33,7 +31,8 @@ fetch(`https://rickandmortyapi.com/api/character`)
 
 function addCard(character) {
     characterCard.innerHTML +=
-        `<div class="card">
+        `<section class="container__card-location">
+        <div class="card_loc">
         <div class="card__text">
         <a href="#">
             <h3 id="h3-character${character.id}" class="character-name">${character.name}</h3>
@@ -42,7 +41,8 @@ function addCard(character) {
             <div class="card__img img__character">
                 <img src="${character.image}" alt="${character.name}">
             </div>
-    </div>`;
+    </div>
+    </section>`;
     //console.log(character)
     
 }
@@ -79,7 +79,7 @@ function addModal(character) {
     characterModal.innerHTML =
         `<div class="modal" id="id-character-${character.id}">
         <div class="icon-cross">
-        <img src="">
+        <img src="${iconCross}">
         </div>
     <div class="modal__card-detail">
     <h3 class="character-name">${character.name}</h3>

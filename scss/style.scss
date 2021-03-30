@@ -15,6 +15,37 @@ h1 {
     margin: 0;
 }
 
+h2{
+    background-color: #fff;
+    padding: 20px;
+    font-family: $shojumaru;
+    font-size: $sizeSelect;
+    font-weight: $weightSelect;
+    color: $green;
+    border-radius: $radiusSelect;
+    cursor: pointer;
+}
+
+#seasons{
+    display: flex;
+    justify-content: center;
+    section{
+        width: 20%;
+        margin: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.season-card{
+    border-radius: 8px;
+    background-color: #555555;
+    width: 100%;
+    margin: 30px 0;
+}
+
 h3 {
     font-family: $shojumaru;
     font-size: $sizeH3;
@@ -71,7 +102,11 @@ img {
     transition: transform .8s ease-in-out;  
 }
 .nav__container-img:hover {
-    transform:rotate(180deg);
+    transform:rotate(360deg);
+    -webkit-transform:rotate(360deg);
+    -moz-transform:rotate(360deg);
+    -ms-transform:rotate(360deg);
+    -o-transform:rotate(360deg);
 }
 
 .nav__container-links {
@@ -282,7 +317,7 @@ footer, .loc {
 
 .container-card-character {
     display: flex;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     flex-wrap: wrap;
     justify-content: space-around;
